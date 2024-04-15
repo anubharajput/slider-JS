@@ -2,7 +2,7 @@ const imgContainer = document.getElementById("sliders");
 const bulletPointsContainer = document.getElementById("bullet-points");
 const prevBtn = document.getElementById("pre-btn");
 const nextBtn = document.getElementById("next-btn");
-const slideImg = ["icons/img1.jpg", "icons/img2.jpg", "icons/img3.jpg", "icons/img4.jpeg", "icons/img5.jpg", "icons/img6.webp", "icons/img7.webp", "icons/img8.jpeg", "icons/img9.jpg"];
+const slideImg = ["images/img1.jpg", "images/img2.jpg", "images/img3.jpg", "images/img4.jpeg", "images/img5.jpg", "images/img6.webp", "images/img7.webp", "images/img8.jpeg", "images/img9.jpg"];
 const createImages = () => {
   for (let i = 0; i < slideImg.length; i++) {
     const slideData = document.createElement("div");
