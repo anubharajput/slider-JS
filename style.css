@@ -7,6 +7,7 @@
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
@@ -19,7 +20,23 @@ body {
     position: relative;
     overflow: hidden;
 }
-
+.progress-bar{
+    position: absolute;
+    height: 5px;
+    width:100%;
+    margin:auto;
+    background-color:white;
+   z-index:3;
+   bottom:3px;
+}
+.progress-bar .filter{
+    position: absolute;
+    height: 5px;
+    margin:auto;
+    background-color:rgb(144, 27, 27);
+   z-index:6;
+ 
+}
 #sliders img {
     top: 0;
     left: 0;
@@ -97,7 +114,7 @@ body {
 
     .bullet-points {
         left: 25%;
-        margin-bottom: 5px;
+        margin-bottom: 14px;
     }
 
     #pre-btn,
@@ -230,5 +247,12 @@ body {
 
     #next-btn {
         right: 20px;
+    }
+    .progress-bar{
+        height:10px;
+        bottom:10px;
+    } 
+    .progress-bar .filter{
+        height: 10px;
     }
 }
