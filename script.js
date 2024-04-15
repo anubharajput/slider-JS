@@ -17,6 +17,7 @@ const showBtn = () => {
     nextBtn.style.display = "block";
   }
 }
+showBtn()
 const imgSlide = () => {
   slide.forEach((e) => {
     e.style.transform = `translateX(-${slideIndex * 100}%)`;
@@ -25,8 +26,10 @@ const imgSlide = () => {
   });
 };
 const invokeOnClick = (index) => {
+  stopAutoSlider();
   slideIndex = index;
   imgSlide();
+  startAutoSlider();
 }
 slide.forEach((img, index) => {
   img.style.left = `${index * 100}%`
@@ -40,32 +43,36 @@ const bulletPointsController = () => {
       bullet.classList.remove("active");
   })
 }
-const previousSlide = () => {
-  console.log("prev");
+bulletPointsController()
+const previousSlide = (e) => {
   slideIndex--;
-  if (slideIndex < 0) {
-    slideIndex = slide.length - 1;
-  }
+  if(slideIndex<0)
+  slideIndex=slide.length-1;
   imgSlide();
 }
 const nextSlide = () => {
-  console.log("Next");
   slideIndex++;
-  if (slideIndex > slide.length - 1) {
-    slideIndex = 0;
-  }
+  if(slideIndex>slide.length-1)
+  slideIndex=0;
   imgSlide();
 }
 let interValRef;
-const autoSlider = () => {
-  setInterval(() => {
-    imgSlide();
-    slideIndex++;
-    if (slideIndex > slide.length - 1) {
-      slideIndex = 0;
-    }
-  }, 2000);
+const startAutoSlider = () => {
+  interValRef = setInterval(() => {
+    nextSlide();
+  }, 3000);
 }
-autoSlider();
-preBtn.addEventListener("click", previousSlide);
-nextBtn.addEventListener("click", nextSlide);
+startAutoSlider();
+const stopAutoSlider = () => {
+  clearInterval(interValRef);
+}
+preBtn.addEventListener("click", () => {
+  stopAutoSlider();
+  previousSlide();
+  startAutoSlider();
+});
+nextBtn.addEventListener("click", () => {
+  stopAutoSlider();
+  nextSlide();
+  startAutoSlider();
+});

@@ -18,12 +18,11 @@
     width: 100%;
 
 }
-
 .slide {
     width: 100%;
     width: 100%;
     position: absolute;
-    transition: all 1s ease;
+    transition: all 1s ease-out;
 }
 
 #pre-btn,
@@ -66,14 +65,13 @@
     width: 8px;
     border-radius: 50%;
     margin: 0px 2px;
-    background-color: #fff;
+    background-color: #ffffff;
     cursor: pointer;
-    transition: all 0.6s ease;
 }
 
 .bullet-points .bullet.active,
 .bullet-points .bullet:hover {
-    background-color: rgb(67, 67, 67);
+    background-color: rgb(10, 165, 242);
 }
 
 @media screen and (min-width:320px) {
