@@ -1,14 +1,30 @@
 const imgContainer = document.getElementById("sliders");
-const bullets = document.querySelectorAll(".bullet");
-const slide = document.querySelectorAll(".slide");
-const preBtn = document.getElementById("pre-btn");
+const bulletContainer = document.getElementById("bullet-points");
+const prevBtn = document.getElementById("pre-btn");
 const nextBtn = document.getElementById("next-btn");
+const slideImg = ["icons/img1.jpg","icons/img2.jpg","icons/img3.jpg","icons/img4.jpeg","icons/img5.jpg","icons/img6.webp","icons/img7.webp","icons/img8.jpeg","icons/img9.jpg"];
+const createImages = () => {
+  for (let i = 0; i < slideImg.length; i++) {
+    const slideData=document.createElement("div");
+    slideData.classList.add("slide");
+    const image = document.createElement("img");
+    image.src = slideImg[i];
+    slideData.appendChild(image);
+    imgContainer.appendChild(slideData);
+    const bulletPoints=document.createElement("div");
+bulletPoints.classList.add("bullet");
+bulletContainer.appendChild(bulletPoints);
+  }
+};
+createImages();
+const bullets=document.querySelectorAll(".bullet")
+const slide = document.querySelectorAll(".slide");        
 let slideIndex = 0;
 const showBtn = () => {
   if (slideIndex == 0) {
-    preBtn.style.display = "none";
+    prevBtn.style.display = "none";
   } else {
-    preBtn.style.display = "block";
+    prevBtn.style.display = "block";
   }
 
   if (slideIndex == slide.length - 1) {
@@ -46,14 +62,14 @@ const bulletPointsController = () => {
 bulletPointsController()
 const previousSlide = (e) => {
   slideIndex--;
-  if(slideIndex<0)
-  slideIndex=slide.length-1;
+  if (slideIndex < 0)
+    slideIndex = slide.length - 1;
   imgSlide();
 }
 const nextSlide = () => {
   slideIndex++;
-  if(slideIndex>slide.length-1)
-  slideIndex=0;
+  if (slideIndex > slide.length - 1)
+    slideIndex = 0;
   imgSlide();
 }
 let interValRef;
@@ -66,7 +82,7 @@ startAutoSlider();
 const stopAutoSlider = () => {
   clearInterval(interValRef);
 }
-preBtn.addEventListener("click", () => {
+prevBtn.addEventListener("click", () => {
   stopAutoSlider();
   previousSlide();
   startAutoSlider();
